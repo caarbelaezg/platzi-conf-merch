@@ -14,21 +14,31 @@ const useInitialState = () => {
   const removeFromCart = (payload, indexToRemove) => {
     setState({
       ...state,
-      cart: state.cart.filter((_item, indexCurrent) => indexCurrent !== indexToRemove),
+      cart: state.cart.filter(
+        (_item, indexCurrent) => indexCurrent !== indexToRemove
+      ),
     });
   };
 
-  const addToBuyer = payload => {
+  const addToBuyer = (payload) => {
     setState({
       ...state,
-      buyer:[...state.buyer, payload]
-    })
-  }
+      buyer: [...state.buyer, payload],
+    });
+  };
+
+  const addNewOrder = (payload) => {
+    setState({
+      ...state,
+      orders: [...state.order, payload],
+    });
+  };
 
   return {
     addToCart,
     removeFromCart,
     addToBuyer,
+    addNewOrder,
     state,
   };
 };
